@@ -1,12 +1,19 @@
 import express from "express";
 import routes from "./routes.js";
 
+import dotenv from "dotenv";
+const dotenvConfig = dotenv.config();
 import cors from "cors";
 
 import bodyParser from "body-parser";
-const app = express();
-const port = 3000;
 
+if (dotenvConfig.error) {
+  throw dotenvConfig.error;
+}
+const app = express();
+const port = process.env.PORT || 3000;
+
+const environment = process.env.NODE_ENV || "development";
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/", routes);
