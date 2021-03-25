@@ -13,7 +13,6 @@ if (dotenvConfig.error) {
 const app = express();
 const port = process.env.PORT || 3000;
 
-const environment = process.env.NODE_ENV || "development";
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/", routes);
